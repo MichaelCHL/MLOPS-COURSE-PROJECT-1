@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 loaded_model = joblib.load(MODEL_OUTPUT_PATH)
 
-@app.route('/', method=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method=='POST':
 
@@ -28,5 +28,10 @@ def index():
                               no_of_weekend_nights, type_of_meal_plan, room_type_reserved]])
         
         prediction = loaded_model.predict(features)
-        
+                
         return render_template('index.html', prediction=prediction[0])
+    
+    return render_template("index.html", prediction=None)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
