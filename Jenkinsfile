@@ -41,7 +41,7 @@ pipeline{
 
                         gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}
 
-                        gcloud config set project ${GCP_PROFECT}
+                        gcloud config set project ${GCP_PROJECT}
 
                         gcloud auth configure-docker --quiet
                         
